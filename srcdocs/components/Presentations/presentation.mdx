@@ -1,0 +1,35 @@
+---
+name: Presentation
+route: /components/Presentation
+menu: 2. Components
+---
+
+import { Playground, Props } from 'docz'
+import { Page, Presentation } from '../../../src/'
+
+# Presentation
+
+
+<Playground>
+  <Presentation width={'500px'} height={'350px'} backgroundColor={'#111'} controllerColor={'#fff'} aspect={{height: 9, width: 16}}>
+
+    <Page isCentering={true}>
+      <h1 style={{color: '#fff'}}>Hello.</h1>
+    </Page>
+
+    <Page isCentering={true}>
+      <h1 style={{color: '#fff'}}>Thanks.</h1>
+    </Page>
+
+    <Page isCentering={true}>
+      <h1 style={{color: '#fff'}}>Fin.</h1>
+    </Page>
+
+  </Presentation>
+</Playground>
+
+
+## Props
+
+<Props of={Presentation} />
+

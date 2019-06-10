@@ -1,0 +1,10 @@
+srcdocs/
+docs/
+images/
+.docz/
+.git/
+README.md
+tsconfig.json
+doczrc.js
+.gitignore
+yarn.lock

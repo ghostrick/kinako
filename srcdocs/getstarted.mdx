@@ -1,0 +1,36 @@
+---
+name: 1. Get Started
+route: /
+---
+
+
+# Get Started
+
+## Installation
+
+```bash
+yarn add kinako
+```
+
+## Basic Usage
+```
+// ...
+import { Page, Presentation } from 'kinako'
+
+const App = () => (
+  <Presentation width={'500px'} height={'350px'} backgroundColor={'#111'} controllerColor={'#fff'}>
+  
+    <Page isCentering={true}>
+      <h1 style={{color: '#fff'}}>Hello.</h1>
+    </Page>
+  
+    <Page isCentering={true}>
+      <h1 style={{color: '#fff'}}>Fin.</h1>
+    </Page>
+  
+  </Presentation>
+)
+
+// ...
+
+```

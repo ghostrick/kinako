@@ -1,0 +1,13 @@
+{
+  "vendors.js": "/kinako/static/js/vendors.0a1c8275.js",
+  "vendors.js.map": "/kinako/static/js/vendors.b33dcf5221cb34d7d56c.js.map",
+  "app.js": "/kinako/static/js/app.b33dcf5221cb34d7d56c.js",
+  "app.js.map": "/kinako/static/js/app.b33dcf5221cb34d7d56c.js.map",
+  "srcdocs-components-page-page.js": "/kinako/static/js/srcdocs-components-page-page.eed73f2c.js",
+  "srcdocs-components-page-page.js.map": "/kinako/static/js/srcdocs-components-page-page.b33dcf5221cb34d7d56c.js.map",
+  "srcdocs-components-presentations-presentation.js": "/kinako/static/js/srcdocs-components-presentations-presentation.29f78200.js",
+  "srcdocs-components-presentations-presentation.js.map": "/kinako/static/js/srcdocs-components-presentations-presentation.b33dcf5221cb34d7d56c.js.map",
+  "srcdocs-getstarted.js": "/kinako/static/js/srcdocs-getstarted.dfabb107.js",
+  "srcdocs-getstarted.js.map": "/kinako/static/js/srcdocs-getstarted.b33dcf5221cb34d7d56c.js.map",
+  "index.html": "/kinako/index.html"
+}
