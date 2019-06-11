@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React, { useState, useMemo, useEffect } from 'react'
 import { jsx, CSSObject, Global } from '@emotion/core'
-import Right from 'react-feather/dist/icons/chevron-right'
-import Left from 'react-feather/dist/icons/chevron-left'
+import { ChevronLeft, ChevronRight, Download } from 'react-feather'
 import Page from './Page'
 
 type Props = {
@@ -33,6 +32,10 @@ type Props = {
    * @default 1
    */
   transitionSpeed?: number
+  /**
+   * If set to true, show button to call print().
+   */
+  isShowPrintButton?: boolean
   children: React.ReactElement<typeof Page>[]
 }
 
@@ -43,7 +46,8 @@ const Presentation: React.FC<Props> = ({
   controllerColor,
   controllerSize,
   currentIndex,
-  transitionSpeed
+  transitionSpeed,
+  isShowPrintButton
 }) => {
   const [current, setCurrent] = useState(1)
   const pageTotal = useMemo(
@@ -73,6 +77,7 @@ const Presentation: React.FC<Props> = ({
     color: controllerColor || '#000',
     '> li': {
       cursor: 'pointer',
+      padding: '0 6px',
       '> svg': {
         width: controllerSize || 32,
         height: controllerSize || 32
@@ -150,17 +155,22 @@ const Presentation: React.FC<Props> = ({
         {contents}
       </main>
       <ul css={controllerStyles}>
+        {isShowPrintButton && (
+          <li>
+            <Download onClick={print} />
+          </li>
+        )}
         <li
           onClick={() => current > 1 && setCurrent(current - 1)}
           css={current < 2 ? { opacity: 0.3 } : {}}
         >
-          <Left />
+          <ChevronLeft />
         </li>
         <li
           onClick={() => !isLast && setCurrent(current + 1)}
           css={isLast ? { opacity: 0.3 } : {}}
         >
-          <Right />
+          <ChevronRight />
         </li>
       </ul>
     </div>

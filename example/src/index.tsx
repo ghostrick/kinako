@@ -15,6 +15,7 @@ const App: React.FC<Props> = () => {
 
   return (
     <Presentation
+      isShowPrintButton={true}
       aspect={{ width: 16, height: 9 }}
       transitionSpeed={0.4}
       controllerSize={48}
