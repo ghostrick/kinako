@@ -1,40 +1,40 @@
 /** @jsx jsx */
-import React, {useState, useMemo, useEffect} from 'react';
-import {jsx, CSSObject, Global} from '@emotion/core';
-import Right from 'react-feather/dist/icons/chevron-right';
-import Left from 'react-feather/dist/icons/chevron-left';
-import Page from './Page';
+import React, { useState, useMemo, useEffect } from 'react'
+import { jsx, CSSObject, Global } from '@emotion/core'
+import Right from 'react-feather/dist/icons/chevron-right'
+import Left from 'react-feather/dist/icons/chevron-left'
+import Page from './Page'
 
 type Props = {
   /**
    * Index of first page
    * @default 1
    */
-  currentIndex?: number;
+  currentIndex?: number
   /**
    * aspect ratio {height, width}
    */
-  aspect: {height: number; width: number};
+  aspect: { height: number; width: number }
   /**
    * background color
    */
-  backgroundColor?: string;
+  backgroundColor?: string
   /**
    * Color of prev/next button
    */
-  controllerColor?: string;
+  controllerColor?: string
   /**
    * Size of prev/next button
    * @default 32
    */
-  controllerSize?: number;
+  controllerSize?: number
   /**
    * (seconds)
    * @default 1
    */
-  transitionSpeed?: number;
-  children: React.ReactElement<typeof Page>[];
-};
+  transitionSpeed?: number
+  children: React.ReactElement<typeof Page>[]
+}
 
 const Presentation: React.FC<Props> = ({
   aspect,
@@ -43,23 +43,23 @@ const Presentation: React.FC<Props> = ({
   controllerColor,
   controllerSize,
   currentIndex,
-  transitionSpeed,
+  transitionSpeed
 }) => {
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState(1)
   const pageTotal = useMemo(
     () => (Array.isArray(children) ? children.length : 1),
-    [children],
-  );
-  const isLast = useMemo(() => pageTotal === current, [current]);
+    [children]
+  )
+  const isLast = useMemo(() => pageTotal === current, [current])
 
   useEffect(() => {
     if (currentIndex !== undefined) {
-      setCurrent(currentIndex);
+      setCurrent(currentIndex)
     }
-  }, [currentIndex]);
+  }, [currentIndex])
 
   if (current > pageTotal || current < 1) {
-    throw 'Page does not exist';
+    throw 'Page does not exist'
   }
 
   const controllerStyles: CSSObject = {
@@ -75,13 +75,13 @@ const Presentation: React.FC<Props> = ({
       cursor: 'pointer',
       '> svg': {
         width: controllerSize || 32,
-        height: controllerSize || 32,
-      },
+        height: controllerSize || 32
+      }
     },
     '@media print': {
-      display: 'none',
-    },
-  };
+      display: 'none'
+    }
+  }
 
   const contents = children.map((c, i) => (
     <div
@@ -95,7 +95,7 @@ const Presentation: React.FC<Props> = ({
         '&:after': {
           content: `""`,
           paddingTop: (aspect.height / aspect.width) * 100 + '%',
-          display: 'block',
+          display: 'block'
         },
         '> *': {
           position: 'absolute',
@@ -103,32 +103,34 @@ const Presentation: React.FC<Props> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: backgroundColor || '#fff',
-        },
-      }}>
+          backgroundColor: backgroundColor || '#fff'
+        }
+      }}
+    >
       {c}
     </div>
-  ));
+  ))
 
   return (
     <div
       css={{
         overflow: 'hidden',
         position: 'relative',
-        '@media print': {overflow: 'hidden'},
-      }}>
+        '@media print': { overflow: 'hidden' }
+      }}
+    >
       <Global
         styles={{
           '@media print': {
             '@page': {
               margin: 0,
-              size: `${aspect.width}in ${aspect.height}in`,
+              size: `${aspect.width}in ${aspect.height}in`
             },
             '*': {
               '-webkit-print-color-adjust': 'exact',
-              'page-break-after': 'avoid',
-            },
-          },
+              'page-break-after': 'avoid'
+            }
+          }
         }}
       />
       <main
@@ -141,25 +143,28 @@ const Presentation: React.FC<Props> = ({
           }s`,
           '@media print': {
             left: 0,
-            display: 'block',
-          },
-        }}>
+            display: 'block'
+          }
+        }}
+      >
         {contents}
       </main>
       <ul css={controllerStyles}>
         <li
           onClick={() => current > 1 && setCurrent(current - 1)}
-          css={current < 2 ? {opacity: 0.3} : {}}>
+          css={current < 2 ? { opacity: 0.3 } : {}}
+        >
           <Left />
         </li>
         <li
           onClick={() => !isLast && setCurrent(current + 1)}
-          css={isLast ? {opacity: 0.3} : {}}>
+          css={isLast ? { opacity: 0.3 } : {}}
+        >
           <Right />
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Presentation;
+export default Presentation
