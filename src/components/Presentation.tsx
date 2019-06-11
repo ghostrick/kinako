@@ -121,6 +121,8 @@ const Presentation: React.FC<Props> = ({
       css={{
         overflow: 'hidden',
         position: 'relative',
+        width: '100%',
+        height: 'max-content',
         '@media print': { overflow: 'hidden' }
       }}
     >
