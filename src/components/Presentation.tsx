@@ -62,6 +62,21 @@ const Presentation: React.FC<Props> = ({
     }
   }, [currentIndex])
 
+  useEffect(() => {
+    function handler(e: KeyboardEvent) {
+      if (e.keyCode === 39) {
+        !isLast && setCurrent(current + 1)
+      }
+      if (e.keyCode === 37) {
+        current > 1 && setCurrent(current - 1)
+      }
+    }
+
+    document.addEventListener('keydown', handler)
+
+    return () => document.removeEventListener('keydown', handler)
+  }, [current, isLast])
+
   if (current > pageTotal || current < 1) {
     throw 'Page does not exist'
   }
